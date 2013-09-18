@@ -1,0 +1,41 @@
+\documentclass[11pt,twoside,a4paper]{article}
+
+%Input source files
+\usepackage{verbatim}
+%Tables: Span cell over multiple rows
+\usepackage{multirow}
+%Figures: Avoid floating (option [H])
+\usepackage{float}
+%Special characters, euro symbol, etc.
+\usepackage{textcomp} 
+%Include graphics in document
+\usepackage{graphicx}
+%command textsubscript 
+\usepackage{fixltx2e} 
+\usepackage{import}
+\usepackage{makeidx}
+
+\makeindex
+
+\begin{document}
+\input{title/main.tex}
+\tableofcontents
+\vfill
+Below the table of content is a \begin{verbatim}\vfill\end{verbatim} to avoid the toc to be stretched to fill the page
+\vfill
+\vfill
+\input{tools/main.tex}
+\input{standard01/main.tex}
+\verbatiminput{standard01/main.tex}
+\vfill \pagebreak
+\input{characters01/main.tex}
+\vfill \pagebreak
+\input{math01/main.tex}
+\vfill \pagebreak
+\input{table01/main.tex}
+\vfill \pagebreak
+\appendix
+\listoftables
+\listoffigures
+\printindex
+\end{document}
