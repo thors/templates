@@ -9,6 +9,11 @@
 *.log
 *.lof
 *.lot
+*.out
+*.upa
+*.upb
+*.pdf
+*~
 .\#*
 \#*
 
