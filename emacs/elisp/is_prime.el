@@ -1,0 +1,50 @@
+(setq testlist (list 1 2 3 4))
+(append testlist 5)
+
+
+(defun log(loglevel text)
+  "Print text if loglevel < logger-loglevel"
+  (progn (when (not (boundp 'logger-loglevel))
+	   (setq logger-loglevel 3))
+	 (when (< loglevel logger-loglevel)
+	   (message text)))
+
+
+(defun isprime(n)
+  "Is Prime function"
+  (let ((i 3)
+	(j 0)
+	(result t)
+	(cancle nil))
+    (if (or (< n 2) (and (> n 2) (eq 0 (mod n 2))))
+	(progn (log 5 (format "early quit, n=%d" n))
+	       (setq result (not t))
+	       (setq cancle t))
+      (if (and (not cancle) (eq n 2))
+	  (progn (log 5 "n=2")
+		 (setq result t))
+	(progn (setq j (sqrt n))
+	       (log 5 (format "n>2, j=%d" j))
+	       (while (not (or cancle (> i j)))
+		 (log 5 (format "Running... i=%d" i))
+		 (if (eq (mod n i) 0)
+		     (progn (setq result (not t))
+			    (setq cancle t))
+		   (setq i (+ i 2))
+		   ))
+	  )
+	)
+      )
+    (eval result)))
+
+(isprime 7)
+
+(floor (sqrt 16))
+(let ((m 16)
+      (i -2))
+  (while (< i m)
+    (message "Num %d: %s" i (if (isprime i) (eval "true") (eval "false")))
+    (setq i (+ i 1))))
+
+(if (isprime 10) (eval "true") (eval "false"))
+(eval "test")
